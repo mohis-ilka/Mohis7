@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم تماس</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="نام شما" required>
+        <input type="text" id="contact" placeholder="ایمیل یا شماره تماس" required>
+        <textarea id="message" placeholder="پیام شما" rows="5" required></textarea>
+        <button type="submit">ارسال پیام</button>
+    </form>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                await fetch('http://localhost:3000/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: document.getElementById('name').value,
+                        contact: document.getElementById('contact').value,
+                        message: document.getElementById('message').value
+                    })
+                });
+                alert('پیام ارسال شد');
+                e.target.reset();
+            } catch {
+                alert('خطا در ارسال');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+:root {
+    --primary: #2196F3;
+    --secondary: #00BCD4;
+    --success: #4CAF50;
+    --error: #f44336;
+    --purple-light: #9D50BB;
+    --purple-dark: #6E48AA;
+    --purple-accent: #B974CE;
+    --text-light: #ffffff;
+    --text-dark: #2c2c2c;
+    --text-color: #000000;
+    --placeholder-color: rgba(0, 0, 0, 0.6);
+    --font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(45deg, var(--purple-dark), var(--purple-light));
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#contactForm {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(110, 72, 170, 0.3);
+    width: 90%;
+    max-width: 450px;
+    transform: translateY(30px);
+    opacity: 0;
+    animation: formAppear 0.6s ease forwards;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes formAppear {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-family: var(--font-family);
+    font-weight: 700;
+    transform: translateX(-10px);
+    opacity: 0;
+    animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+input, textarea, button {
+    font-family: var(--font-family);
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: var(--text-color);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--purple-accent);
+    box-shadow: 0 0 20px rgba(185, 116, 206, 0.3);
+    transform: scale(1.01);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.8); /* پس‌زمینه روشن‌تر */
+    border: 2px solid var(--purple-accent); /* اضافه کردن border بنفش */
+    border-radius: 12px;
+    color: var(--text-color); /* تغییر رنگ متن به مشکی */
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background: var(--purple-accent);
+    color: var(--text-light); /* تغییر رنگ متن به سفید در حالت hover */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+button:active::after {
+    animation: ripple 0.8s ease-out;
+}
+
+@keyframes ripple {
+    0% { transform: scale(0, 0); opacity: 0.5; }
+    100% { transform: scale(40, 40); opacity: 0; }
+}
+
+::placeholder {
+    color: var(--placeholder-color);
+    font-family: var(--font-family);
+    font-weight: 400;
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--placeholder-color);
+}
+
+.success-message {
+    background: var(--success);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    animation: fadeIn 0.5s ease;
+}
+
+.error-message {
+    background: var(--error);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    animation: shake 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    #contactForm {
+        width: 85%;
+        padding: 1.8rem;
+        border-radius: 18px;
+    }
+
+    input, textarea, button {
+        font-size: 15px;
+        padding: 14px;
+        margin: 8px 0;
+    }
+
+    button {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+
+    #contactForm {
+        padding: 1.5rem;
+        width: 90%;
+        transform: translateY(20px);
+        animation: formAppearMobile 0.6s ease forwards;
+        border-radius: 15px;
+    }
+
+    input, textarea, button {
+        font-size: 14px;
+        padding: 12px;
+        margin: 6px 0;
+    }
+
+    button {
+        margin-top: 12px;
+    }
+}
+
+@keyframes formAppearMobile {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 380px) {
+    body {
+        padding: 10px;
+    }
+
+    #contactForm {
+        width: 95%;
+        padding: 1.2rem;
+        border-radius: 12px;
+    }
+
+    input, textarea, button {
+        font-size: 13px;
+        padding: 10px;
+        margin: 5px 0;
+    }
+
+    ::placeholder {
+        font-size: 13px;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    body {
+        padding: 8px;
+    }
+
+    #contactForm {
+        width: 92%;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+
+    input, textarea, button {
+        font-size: 12px;
+        padding: 8px;
+        margin: 4px 0;
+    }
+
+    ::placeholder {
+        font-size: 12px;
+    }
+
+    button {
+        margin-top: 8px;
+        padding: 8px;
+    }
+}
+
+/* تنظیمات برای دستگاه‌های با ارتفاع کم */
+@media (max-height: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    #contactForm {
+        padding: 1.5rem;
+        transform: none;
+    }
+
+    textarea {
+        max-height: 100px;
+    }
+}
+
+/* تنظیمات برای دستگاه‌های با نسبت تصویر خاص */
+@media (max-aspect-ratio: 16/9) {
+    body {
+        background-size: 300% 300%;
+    }
+}
+
+/* تنظیمات برای دستگاه‌های با رزولوشن بالا */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    input, textarea, button {
+        border-width: 0.5px;
+    }
+
+    #contactForm {
+        box-shadow: 0 8px 24px rgba(110, 72, 170, 0.2);
+    }
+}
+
+/* تنظیمات برای حالت چاپ */
+@media print {
+    body {
+        background: white;
+    }
+
+    #contactForm {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        width: 100%;
+        max-width: none;
+    }
+}
+
+/* تنظیمات برای حالت تاریک */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #ffffff;
+        --placeholder-color: rgba(255, 255, 255, 0.6);
+    }
+
+    #contactForm {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    input, textarea {
+        background: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* تنظیمات برای کاربرانی که ترجیح به حرکت کمتر دارند */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

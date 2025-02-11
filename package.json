@@ -1,0 +1,19 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "express.js",
+  "type": "module",
+  "scripts": {
+    "start": "node express.js",
+    "list": "npm list --depth=0",
+    "version": "node --version && npm --version"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.8.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemailer": "^6.6.3"
+  }
+}

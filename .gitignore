@@ -1,8 +1,8 @@
 # Contact Form Project
-
+node_modules/
 یک فرم تماس ساده با قابلیت ارسال ایمیل
 
-## امکانات
+## امکاناتent
 - ارسال ایمیل با Nodemailer
 - طراحی زیبا و ریسپانسیو
 - انیمیشن‌های جذاب
@@ -10,8 +10,14 @@
 - مدیریت خطا
 
 ## نصب و راه‌اندازی
+*.log
+1. نصب وابستگی‌ها:```bashnpm install```
+## تنظیمات احراز هویت
 
-1. نصب وابستگی‌ها:
-```bash
-npm install
+```json
+auth: {
+    user: 'YOUR_EMAIL@gmail.com',
+    pass: 'YOUR_APP_PASSWORD'
+}
+```
 
